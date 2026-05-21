@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { fontDisplay, fontBody, fontMono } from '@/lib/fonts'
-import { SITE } from '@/content/landing'
+import { SITE } from '@/lib/copy'
 import { organizationSchema, websiteSchema } from '@/lib/structured-data'
 import './globals.css'
 
@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   keywords: [
     'NOA', 'NOACORE', 'wellness tech minería', 'recuperación neuro-sensorial',
     'mujeres en minería', 'fatiga cognitiva', 'salud ocupacional Chile',
-    'CORFO', 'Start-Up Chile', 'cabina modular minera',
+    'cabina modular minera', 'DS 594', 'Ley 16.744', 'HSEC minería',
+    'industrial wellness', 'TRL 5 minería', 'protocolo sensorial industrial',
   ],
   authors: [{ name: 'NOACORE SPA' }],
   creator: 'NOACORE SPA',
@@ -48,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-CL"
-      className={`${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable}`}
+      className={`${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable} antialiased`}
     >
       <head>
         <script

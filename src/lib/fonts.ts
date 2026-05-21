@@ -1,6 +1,6 @@
-import { Cormorant_Garamond, DM_Sans, DM_Mono } from 'next/font/google'
+import { Cormorant_Garamond, Manrope, DM_Mono } from 'next/font/google'
 
-// Display / Headlines — editorial, alma artística
+// Display / Headlines — serif editorial brandbook NOA
 export const fontDisplay = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-cormorant',
@@ -9,18 +9,18 @@ export const fontDisplay = Cormorant_Garamond({
   display: 'swap',
 })
 
-// Body / Functional — geométrica, industrial (sustituto de Nexa)
-export const fontBody = DM_Sans({
+// Body / Narrativa — sans-serif limpia
+export const fontBody = Manrope({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-manrope',
   weight: ['300', '400', '500', '700'],
   display: 'swap',
 })
 
-// Metadata / Labels / Eyebrows
+// Mono — DM Mono para eyebrows, labels técnicos, micro-text
 export const fontMono = DM_Mono({
   subsets: ['latin'],
   variable: '--font-dm-mono',
-  weight: ['400', '500'],
+  weight: ['300', '400', '500'],
   display: 'swap',
 })

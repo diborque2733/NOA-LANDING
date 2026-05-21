@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     const html = `
       <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
-        <h2 style="font-family: Georgia, serif; color: #003633; border-bottom: 1px solid #BFC8C6; padding-bottom: 12px;">
+        <h2 style="font-family: -apple-system, system-ui, sans-serif; font-weight: 600; color: #51765A; border-bottom: 1px solid #D4C9BC; padding-bottom: 12px;">
           Nuevo contacto · NOA Landing
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
@@ -57,7 +57,7 @@ export async function POST(req: Request) {
             ? `<div style="margin-top: 24px;"><p style="color: #6E6F66; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Contexto</p><p style="color: #1B1C18; line-height: 1.6; white-space: pre-wrap;">${message}</p></div>`
             : ''
         }
-        <p style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #E4E2DC; color: #8F4D1A; font-size: 12px;">
+        <p style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #E8DDD0; color: #C4A882; font-size: 12px;">
           Generado desde noa-core.com
         </p>
       </div>

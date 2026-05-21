@@ -3,9 +3,8 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X } from 'lucide-react'
-import { NAV } from '@/content/landing'
-import { Button } from '@/components/ui/Button'
+import { Menu, X, ArrowRight } from 'lucide-react'
+import { NAV } from '@/lib/copy'
 import { cn } from '@/lib/cn'
 
 export function Navbar() {
@@ -22,9 +21,14 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 transition-all duration-300',
-        scrolled ? 'glass' : 'bg-transparent'
+        'fixed inset-x-0 top-0 z-50 transition-all duration-300',
+        scrolled && 'nav-glass'
       )}
+      style={{
+        borderBottom: scrolled
+          ? '1px solid rgba(228, 226, 220, 0.3)'
+          : '1px solid transparent',
+      }}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-10 py-5">
         <Link href="/" className="flex items-center gap-3" aria-label="NOA — Inicio">
@@ -43,7 +47,12 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
+              className="text-sm transition-colors hover:text-[var(--color-tertiary)]"
+              style={{
+                color: 'var(--color-on-surface-variant)',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 500,
+              }}
             >
               {link.label}
             </Link>
@@ -51,38 +60,55 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href={NAV.cta.href} variant="primary" size="sm">
-            {NAV.cta.label}
-          </Button>
+          <a href={NAV.cta.href} className="btn-primary group" style={{ padding: '0.65rem 1.25rem', fontSize: '0.85rem' }}>
+            <span>{NAV.cta.label}</span>
+            <ArrowRight
+              className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+              strokeWidth={2}
+              aria-hidden
+            />
+          </a>
         </div>
 
         <button
           type="button"
           aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
           className="lg:hidden p-2 -mr-2"
+          style={{ color: 'var(--color-on-surface)' }}
         >
           {menuOpen ? <X strokeWidth={1.5} /> : <Menu strokeWidth={1.5} />}
         </button>
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden glass border-t border-[rgba(191,200,198,0.4)]">
+        <div
+          className="lg:hidden nav-glass"
+          style={{
+            borderTop: '1px solid rgba(228, 226, 220, 0.3)',
+          }}
+        >
           <nav className="mx-auto flex w-full max-w-7xl flex-col px-6 py-6 gap-1">
             {NAV.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 text-base text-[var(--color-on-surface)] hover:text-[var(--color-primary)]"
+                className="py-3 text-base transition-colors"
+                style={{ color: 'var(--color-on-surface)', fontFamily: 'var(--font-body)' }}
               >
                 {link.label}
               </Link>
             ))}
             <div className="pt-4">
-              <Button href={NAV.cta.href} variant="primary" className="w-full">
+              <a
+                href={NAV.cta.href}
+                onClick={() => setMenuOpen(false)}
+                className="btn-primary w-full justify-center"
+              >
                 {NAV.cta.label}
-              </Button>
+              </a>
             </div>
           </nav>
         </div>

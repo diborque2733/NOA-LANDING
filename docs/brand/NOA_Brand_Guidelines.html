@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOA — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600&family=Manrope:wght@300;400;500;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface: #FFFFFF;
+    --surface-container-low: #F5F3EE;
+    --surface-container-lowest: #FFFFFF;
+    --surface-container-high: #EDEAE3;
+    --surface-container-highest: #E4E2DD;
+    --on-surface: #12181B;
+    --on-surface-variant: #4A4F52;
+    --primary: #003633;
+    --primary-container: #0D4E4A;
+    --tertiary: #B56C36;
+    --tertiary-light: #D4915A;
+    --outline-variant: #E4E2DC;
+    --on-primary: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--surface);
+    color: var(--on-surface);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--surface-container-low);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 70vw;
+    height: 70vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181,108,54,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(181,108,54,0.4), transparent);
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 1.05;
+    color: var(--on-surface);
+    max-width: 900px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--tertiary);
+  }
+  .hero-sub {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--on-surface-variant);
+    margin-top: 2.5rem;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 8rem 5vw;
+  }
+  .bg-warm { background: var(--surface-container-low); }
+  .bg-dark {
+    background: var(--surface);
+    color: var(--on-surface);
+  }
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 1.5rem;
+  }
+  .bg-dark .section-eyebrow { color: var(--tertiary); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 3rem;
+    max-width: 700px;
+  }
+  .section-title em { font-style: italic; color: var(--tertiary); }
+  .bg-dark .section-title em { color: var(--tertiary); }
+
+  .section-body {
+    font-size: 0.95rem;
+    color: var(--on-surface-variant);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+  .bg-dark .section-body { color: var(--on-surface-variant); }
+
+  /* ─── COLORS GRID ─── */
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .color-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: 0px 24px 48px rgba(18,24,27,0.06);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .color-card:hover { transform: translateY(-4px); }
+  .color-swatch {
+    height: 140px;
+    position: relative;
+  }
+  .color-swatch::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.08), transparent);
+  }
+  .color-info {
+    padding: 1.25rem;
+  }
+  .color-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+  .color-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--on-surface-variant);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .color-role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.72rem;
+    color: var(--on-surface-variant);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* ─── TYPOGRAPHY SHOWCASE ─── */
+  .typo-row {
+    display: flex;
+    align-items: baseline;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(228,226,220,0.4);
+  }
+  .typo-row:last-child { border-bottom: none; }
+  .typo-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+  .typo-sample-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    color: var(--on-surface);
+  }
+  .typo-sample-display em { font-style: italic; color: var(--tertiary); }
+  .typo-sample-technical {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+  }
+  .typo-sample-narrative {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--on-surface-variant);
+    max-width: 460px;
+  }
+  .typo-sample-action {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    color: var(--primary-container);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* ─── BUTTONS SHOWCASE ─── */
+  .buttons-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .btn-primary {
+    background: var(--primary-container);
+    background-image: radial-gradient(ellipse at 40% 40%, var(--primary-container), var(--primary));
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(13,78,74,0.25);
+  }
+  .btn-primary:hover { box-shadow: 0 12px 32px rgba(13,78,74,0.35); transform: translateY(-2px); }
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--on-surface);
+    border: 1px solid rgba(228,226,220,0.4);
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover { border-color: var(--tertiary); }
+  .btn-tertiary {
+    background: none;
+    border: none;
+    color: var(--on-surface);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .btn-tertiary::after {
+    content: ' →';
+    color: var(--tertiary);
+  }
+  .btn-tertiary::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--tertiary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .btn-tertiary:hover::before { transform: scaleX(1); }
+
+  /* ─── ELEVATION SHOWCASE ─── */
+  .elevation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .elevation-card {
+    border-radius: 1rem;
+    padding: 2.5rem;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .elevation-card.level-0 {
+    background: var(--surface-container-low);
+  }
+  .elevation-card.level-1 {
+    background: var(--surface);
+    box-shadow: 0px 24px 48px rgba(18,24,27,0.06);
+  }
+  .elevation-card.level-2 {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(228,226,220,0.3);
+  }
+  .elevation-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: 0.4rem;
+  }
+  .elevation-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  /* ─── PRINCIPLES ─── */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .principle-card {
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background: var(--surface);
+    box-shadow: 0px 24px 48px rgba(18,24,27,0.06);
+  }
+  .principle-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 2.8rem;
+    color: var(--tertiary);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+  .principle-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .principle-body {
+    font-size: 0.82rem;
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+  }
+
+  /* ─── DO / DONT ─── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 768px) { .rules-grid { grid-template-columns: 1fr; } }
+  .rules-column h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .rules-column h3 .dot-do {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--primary-container); display: inline-block;
+  }
+  .rules-column h3 .dot-dont {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--tertiary); display: inline-block;
+  }
+  .rule-item {
+    font-size: 0.85rem;
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(228,226,220,0.4);
+  }
+  .rule-item:last-child { border-bottom: none; }
+
+  /* ─── COPPER ACCENT BAR ─── */
+  .copper-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--tertiary), transparent);
+    margin: 0;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 4rem 5vw;
+    background: var(--surface-container-low);
+    color: var(--on-surface-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: var(--on-surface);
+  }
+  .footer-legal {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── ASYMMETRIC LAYOUT HELPER ─── */
+  .asym-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .asym-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .typo-row { flex-direction: column; gap: 1rem; }
+  }
+
+  /* ─── SPACING SHOWCASE ─── */
+  .spacing-visual {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-top: 2rem;
+  }
+  .spacing-block {
+    background: var(--primary-container);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+  }
+  .spacing-block span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+  }
+
+  /* Animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1, .hero-eyebrow, .hero-sub {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.3s; }
+  .hero-sub { animation-delay: 0.6s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">NOA — Brand Guidelines v1.0 · Marzo 2026</div>
+  <h1>Industrial<br><em>Elegance</em></h1>
+  <p class="hero-sub">Sistema de diseño para NOA — Noa Pacific Core SpA. Recuperación neuro-sensorial industrial para minería de alta exigencia.</p>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ PHILOSOPHY ═══════════════════ -->
+<section>
+  <div class="asym-layout">
+    <div>
+      <div class="section-eyebrow">01 — Filosofía de Diseño</div>
+      <h2 class="section-title">El <em>Atelier</em> Industrial</h2>
+    </div>
+    <div>
+      <p class="section-body">
+        NOA rechaza la estética genérica de SaaS y productos tecnológicos. Su identidad visual se construye sobre la tensión entre la precisión industrial y la calidez humanística. Cada superficie, cada tipografía, cada color comunica que la tecnología puede ser elegante sin perder rigurosidad.
+      </p>
+      <br>
+      <p class="section-body">
+        El principio rector es el <strong>"Espacio Negativo Agresivo"</strong> — el espacio vacío no es ausencia, es estructura. El contraste entre la monoespaciada técnica y la serif editorial crea un ritmo visual deliberado.
+      </p>
+    </div>
+  </div>
+
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="principle-number">01</div>
+      <div class="principle-title">Warm Industrial</div>
+      <p class="principle-body">Paleta enraizada en slate, cobre y crema. Sin azules fríos de tech convencional. El cobre es la "chispa industrial" en un mundo silenciado.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-number">02</div>
+      <div class="principle-title">Asimetría Intencional</div>
+      <p class="principle-body">El contenido se desplaza del centro. La mirada recorre el canvas en un flujo rítmico y deliberado, no predecible.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-number">03</div>
+      <div class="principle-title">Profundidad Sentida</div>
+      <p class="principle-body">La elevación se siente, no se ve. Sin sombras pesadas. Capas de papel sobre papel — tonal layering como método primario de profundidad.</p>
+    </div>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ COLORS ═══════════════════ -->
+<section class="bg-warm">
+  <div class="section-eyebrow">02 — Paleta de Color</div>
+  <h2 class="section-title">Warm <em>Industrial</em> Spectrum</h2>
+  <p class="section-body">La paleta se aleja de los azules fríos del tech tradicional. Cada color tiene un rol específico en la jerarquía de superficies.</p>
+
+  <div class="colors-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: linear-gradient(135deg, #003633, #0D4E4A);"></div>
+      <div class="color-info">
+        <div class="color-name">Deep Teal</div>
+        <div class="color-hex">Primary · #003633</div>
+        <div class="color-role">CTAs, fondos principales, identidad core</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: radial-gradient(ellipse at 40% 40%, #0D4E4A, #003633);"></div>
+      <div class="color-info">
+        <div class="color-name">Teal Container</div>
+        <div class="color-hex">Primary Container · #0D4E4A</div>
+        <div class="color-role">Botones, acentos primarios con gradiente sutil</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: linear-gradient(135deg, #B56C36, #D4915A);"></div>
+      <div class="color-info">
+        <div class="color-name">Copper</div>
+        <div class="color-hex">Tertiary · #B56C36</div>
+        <div class="color-role">La "chispa industrial" — acentos, radio buttons, progress bars, badges</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F5F3EE;"></div>
+      <div class="color-info">
+        <div class="color-name">Warm Cream</div>
+        <div class="color-hex">Surface Low · #F5F3EE</div>
+        <div class="color-role">Sub-secciones, fondos de segundo nivel</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #FFFFFF; border-bottom: 1px solid #E4E2DC;"></div>
+      <div class="color-info">
+        <div class="color-name">White Surface</div>
+        <div class="color-hex">Surface · #FFFFFF</div>
+        <div class="color-role">Capa base, cards flotantes, inputs</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #12181B;"></div>
+      <div class="color-info">
+        <div class="color-name">Dark Slate</div>
+        <div class="color-hex">On-Surface · #12181B</div>
+        <div class="color-role">Texto principal. Nunca negro puro (#000)</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #E4E2DC;"></div>
+      <div class="color-info">
+        <div class="color-name">Ghost Border</div>
+        <div class="color-hex">Outline Variant · #E4E2DC</div>
+        <div class="color-role">Bordes al 40% de opacidad. Nunca 100%</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #E4E2DD;"></div>
+      <div class="color-info">
+        <div class="color-name">Warm Placeholder</div>
+        <div class="color-hex">Surface Highest · #E4E2DD</div>
+        <div class="color-role">Placeholders de imagen, estados vacíos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ SURFACE RULES ═══════════════════ -->
+<section>
+  <div class="asym-layout">
+    <div>
+      <div class="section-eyebrow">03 — Lógica de Superficies</div>
+      <h2 class="section-title">La regla del <em>No-Line</em></h2>
+      <p class="section-body">
+        Los bordes de 1px están prohibidos para seccionar. Los límites se definen exclusivamente mediante cambios de color de fondo. Tratar la UI como hojas de papel fino apiladas.
+      </p>
+    </div>
+    <div>
+      <div class="elevation-grid">
+        <div class="elevation-card level-0">
+          <div class="elevation-label">Nivel 0</div>
+          <div class="elevation-name">Surface Container Low</div>
+        </div>
+        <div class="elevation-card level-1">
+          <div class="elevation-label">Nivel 1 — Ambient Shadow</div>
+          <div class="elevation-name">Floating Card</div>
+        </div>
+        <div class="elevation-card level-2">
+          <div class="elevation-label">Nivel 2 — Glassmorphism</div>
+          <div class="elevation-name">Modal / Overlay</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ TYPOGRAPHY ═══════════════════ -->
+<section class="bg-warm">
+  <div class="section-eyebrow">04 — Tipografía</div>
+  <h2 class="section-title">La voz <em>Editorial</em></h2>
+  <p class="section-body" style="margin-bottom: 3rem;">Una conversación entre la precisión técnica y la sofisticación literaria.</p>
+
+  <div class="typo-row">
+    <div class="typo-label">Display / Headline<br>Cormorant Garamond 300</div>
+    <div class="typo-sample-display">Recovery is an <em>architecture</em></div>
+  </div>
+  <div class="typo-row">
+    <div class="typo-label">Technical / Eyebrow<br>DM Mono · Uppercase</div>
+    <div class="typo-sample-technical">NOA — Industrial Neuro-Sensory Recovery System · Santiago, Chile</div>
+  </div>
+  <div class="typo-row">
+    <div class="typo-label">Narrative / Body<br>Manrope 300</div>
+    <div class="typo-sample-narrative">El pod NOA es una cápsula individual de recuperación neuro-sensorial, diseñada para uso en interiores de faena minera. Cada pod funciona de manera autónoma y replicable.</div>
+  </div>
+  <div class="typo-row">
+    <div class="typo-label">Action / Buttons<br>Manrope Bold</div>
+    <div class="typo-sample-action">Solicitar Cotización →</div>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ COMPONENTS ═══════════════════ -->
+<section>
+  <div class="section-eyebrow">05 — Componentes</div>
+  <h2 class="section-title">Botones y <em>Acciones</em></h2>
+  <p class="section-body">Los CTAs primarios llevan un gradiente radial casi imperceptible — "alma visual" que los diferencia de un plano sólido.</p>
+
+  <div class="buttons-row">
+    <button class="btn-primary">Solicitar Piloto</button>
+    <button class="btn-secondary">Ver Especificaciones</button>
+    <button class="btn-tertiary">Descargar RFQ</button>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ SPACING ═══════════════════ -->
+<section class="bg-warm">
+  <div class="asym-layout">
+    <div>
+      <div class="section-eyebrow">06 — Espaciado</div>
+      <h2 class="section-title">Si crees que hay suficiente espacio, <em>agrega 20% más</em></h2>
+    </div>
+    <div>
+      <p class="section-body">El espaciado es generoso. La escala base usa múltiplos de 0.5rem. Las separaciones entre secciones nunca bajan de 2.75rem (spacing-8).</p>
+      <div class="spacing-visual">
+        <div class="spacing-block" style="width:32px; height:32px;"><span>4</span></div>
+        <div class="spacing-block" style="width:32px; height:48px;"><span>8</span></div>
+        <div class="spacing-block" style="width:32px; height:64px;"><span>16</span></div>
+        <div class="spacing-block" style="width:32px; height:88px;"><span>24</span></div>
+        <div class="spacing-block" style="width:32px; height:110px;"><span>32</span></div>
+        <div class="spacing-block" style="width:32px; height:140px;"><span>48</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ DO / DONT ═══════════════════ -->
+<section>
+  <div class="section-eyebrow">07 — Reglas de Uso</div>
+  <h2 class="section-title">Lo que <em>hacemos</em> y lo que no</h2>
+
+  <div class="rules-grid">
+    <div class="rules-column">
+      <h3><span class="dot-do"></span> Hacer</h3>
+      <div class="rule-item">Usar layouts asimétricos. Headline a la izquierda, mono-label al extremo derecho.</div>
+      <div class="rule-item">Usar itálicas en headlines para enfatizar conceptos de "innovación" o "precisión".</div>
+      <div class="rule-item">Dejar que el contenido respire — si crees que hay suficiente whitespace, agrega 20% más.</div>
+      <div class="rule-item">Usar el Copper (#B56C36) como acento exclusivo en micro-detalles: radio buttons, progress bars, badges.</div>
+      <div class="rule-item">Definir límites con cambios de color de fondo, no con líneas.</div>
+    </div>
+    <div class="rules-column">
+      <h3><span class="dot-dont"></span> No hacer</h3>
+      <div class="rule-item">Nunca usar negro puro (#000). Siempre Dark Slate (#12181B).</div>
+      <div class="rule-item">Nunca usar sombras tipo Material Design. Si parece una sombra, es demasiado pesada.</div>
+      <div class="rule-item">Nunca usar esquinas afiladas. Todo container se suaviza — mínimo 1rem de border-radius.</div>
+      <div class="rule-item">Nunca usar íconos con trazo grueso. Solo "Thin" o "Light" para armonizar con los headlines weight 300.</div>
+      <div class="rule-item">Nunca usar bordes de 1px opacos al 100% para seccionar contenido.</div>
+    </div>
+  </div>
+</section>
+
+<div class="copper-divider"></div>
+
+<!-- ═══════════════════ APPLICATION CONTEXT ═══════════════════ -->
+<section class="bg-dark">
+  <div class="section-eyebrow">08 — Aplicación</div>
+  <h2 class="section-title">Contexto <em>Industrial</em></h2>
+  <p class="section-body">
+    Este sistema de diseño se aplica en todos los puntos de contacto de NOA: RFQ para proveedores, presentaciones a mineras, interfaz del panel de control del pod, señalética interior de la cápsula, documentación técnica y comunicación comercial.
+  </p>
+  <p class="section-body" style="margin-top: 1.5rem;">
+    La identidad debe transmitir que NOA es un sistema de grado industrial con la sofisticación de un producto de lujo — porque la recuperación de las personas que trabajan en condiciones extremas merece esa misma exigencia.
+  </p>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<div class="footer">
+  <div class="footer-brand">NOA</div>
+  <div class="footer-legal">Confidencial — Noa Pacific Core SpA · 2026</div>
+</div>
+
+</body>
+</html>

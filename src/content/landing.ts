@@ -13,7 +13,7 @@ export const SITE = {
   description:
     'Sistema de recuperación neuro-sensorial industrial diseñado para mujeres en minería. Micro-pausas efectivas, recuperación funcional y medible dentro del turno.',
   locale: 'es_CL',
-  ogImage: '/brand/logo.png',
+  ogImage: '/opengraph-image',
 } as const
 
 export const NAV = {
@@ -37,7 +37,7 @@ export const HERO = {
     'NOA convierte pausas en recuperación funcional y medible dentro del turno. Micro-pausas efectivas → recuperación real → foco al volver.',
   primaryCta:   { label: 'Solicitar piloto',  href: '#contacto' },
   secondaryCta: { label: 'Conocer el sistema', href: '#solucion' },
-  trustLine: 'Postulado a Start-Up Chile BIG12 · BUILD 2026',
+  trustLine: 'TRL 5 · Diseñado bajo DS 594 + Ley 16.744 · Disponible para piloto',
 } as const
 
 export const MANIFESTO = {
@@ -202,42 +202,60 @@ export const USE_CASES = {
 
 export const PRICING = {
   eyebrow: '07 / MODELOS DE COLABORACIÓN',
-  headline: 'Entramos por la vía de menor fricción financiera.',
+  headline: 'Tres caminos hacia el despliegue. Alcance económico a medida.',
+  subline:
+    'Estructuramos la inversión según el modelo de procurement de cada faena — piloto pagado, arriendo operacional o adquisición CAPEX.',
   models: [
     {
       eyebrow: 'PILOTO',
-      title: 'Pago único + KPIs',
-      description: '6–8 semanas. Validación con métricas pre/post y reporte ejecutivo.',
+      title: 'Validación pagada',
+      description: 'Despliegue de 6–8 semanas con baseline, instalación, operación e informe ejecutivo. Marco contractual breve.',
       bullets: [
-        'Site check + instalación + operación',
-        'Telemetría completa durante el piloto',
+        'Site check + instalación + operación llave en mano',
+        'Telemetría completa y métricas pre/post',
         'Informe ejecutivo con datos comparables',
+        'Cláusula de continuidad opcional',
       ],
       highlight: false,
+      cta: 'Coordinar piloto',
     },
     {
-      eyebrow: 'ARRIENDO · OPEX',
-      title: 'Suscripción mensual',
-      description: 'USD 2.500–3.000 por cabina al mes. Contratos mínimos de 24 meses.',
+      eyebrow: 'OPEX · ARRIENDO',
+      title: 'Operación continua',
+      description: 'Cabina operada bajo contrato mensual o por turno. Escalamiento ágil entre activos, soporte y mantenimiento incluidos.',
       bullets: [
-        'Escalamiento ágil entre activos',
+        'Sin CAPEX para el operador',
         'Soporte y mantenimiento incluidos',
-        'Actualización de protocolo continua',
+        'Escalamiento ágil entre faenas',
+        'Actualización del protocolo continua',
       ],
       highlight: true,
+      cta: 'Solicitar propuesta',
     },
     {
-      eyebrow: 'VENTA · CAPEX',
+      eyebrow: 'CAPEX · VENTA',
       title: 'Adquisición del activo',
-      description: 'USD 30.000–40.000 por cabina. Mantenimiento anual desde USD 5.000.',
+      description: 'Compra de la cabina como infraestructura permanente del cliente. Customización del módulo y opción de licenciamiento del protocolo.',
       bullets: [
-        'Infraestructura permanente del cliente',
-        'Customización ±30% sobre base',
+        'Infraestructura permanente en faena',
+        'Customización ±30% sobre la base',
         'Licenciamiento del protocolo opcional',
+        'Mantenimiento bajo contrato anual',
       ],
       highlight: false,
+      cta: 'Solicitar cotización',
     },
   ],
+  procurement: {
+    eyebrow: 'LISTOS PARA PROCUREMENT',
+    title: 'Diseñados para entrar a tu vendor master sin fricción.',
+    items: [
+      { label: 'Safety Dossier', detail: 'Matriz de riesgos por control' },
+      { label: 'DS 594 + Ley 16.744', detail: 'Diseñado bajo normativa chilena' },
+      { label: 'NDA + RFI/RFQ', detail: 'Respuesta en menos de 10 días hábiles' },
+      { label: 'Vendor onboarding', detail: 'SAP · Ariba · Coupa · ServiceNow' },
+    ],
+  },
 } as const
 
 export const TEAM = {
@@ -276,12 +294,12 @@ export const TRUST = {
   eyebrow: '09 / CUMPLIMIENTO',
   headline: 'Diseñado para entrar a faena.',
   items: [
-    { eyebrow: 'NORMATIVA',  title: 'DS 594',       sub: 'Iluminación, ventilación, ruido, temperatura' },
-    { eyebrow: 'NORMATIVA',  title: 'Ley 16.744',   sub: 'Salud ocupacional y prevención de riesgos' },
+    { eyebrow: 'NORMATIVA',  title: 'DS 594',         sub: 'Iluminación, ventilación, ruido, temperatura' },
+    { eyebrow: 'NORMATIVA',  title: 'Ley 16.744',     sub: 'Salud ocupacional y prevención de riesgos' },
     { eyebrow: 'HSEC',       title: 'Safety Dossier', sub: 'Matriz de riesgos + responsable por control' },
-    { eyebrow: 'ESCALADO',   title: 'TRL 5',         sub: 'Tecnología validada en entorno relevante' },
-    { eyebrow: 'POSTULACIÓN',title: 'Start-Up Chile · BIG12', sub: 'BUILD 2026 · NOACORE SPA' },
-    { eyebrow: 'ONU',        title: 'SDG 3 · 5 · 8 · 9 · 10', sub: 'Bienestar, equidad, trabajo digno, innovación' },
+    { eyebrow: 'ESCALADO',   title: 'TRL 5',          sub: 'Tecnología validada en entorno relevante' },
+    { eyebrow: 'ALINEACIÓN', title: 'SDG 3 · 5 · 8 · 9 · 10', sub: 'Bienestar, equidad, trabajo digno, innovación' },
+    { eyebrow: 'INNOVACIÓN', title: 'Start-Up Chile · BIG12', sub: 'BUILD 2026 · NOACORE SPA' },
   ],
 } as const
 
@@ -312,9 +330,9 @@ export const FAQ: { question: string; answer: string }[] = [
       'Uso y adopción por turno, cumplimiento del protocolo, fatiga percibida pre/post mediante mediciones directas, y satisfacción de usuarias finales. Los targets exactos se definen en la etapa de Baseline junto al mandante.',
   },
   {
-    question: '¿Cuál es el costo de un piloto?',
+    question: '¿Cómo se estructura el alcance económico?',
     answer:
-      'Coordinamos el alcance económico directamente con cada operación. El modelo más común es piloto pagado de 6–8 semanas + opción de continuidad en arriendo OPEX o venta CAPEX. Escribinos para una propuesta a medida.',
+      'Compatible con los modelos de procurement de gran minería: piloto pagado (6–8 semanas con KPIs), arriendo OPEX (mensual o por turno) o adquisición CAPEX con licenciamiento del protocolo opcional. La cotización se ajusta a la faena, escala y duración del contrato. Respondemos RFI/RFQ en menos de 10 días hábiles.',
   },
 ] as const
 
@@ -368,6 +386,6 @@ export const FOOTER = {
       ],
     },
   ],
-  corfo: 'Postulación Start-Up Chile · BIG12 BUILD 2026',
+  corfo: 'NOACORE SPA · Innovación en bienestar industrial · Chile',
   copyright: `© ${new Date().getFullYear()} NOACORE SPA. Todos los derechos reservados.`,
 } as const
