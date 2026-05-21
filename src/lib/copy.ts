@@ -16,6 +16,18 @@ export const SITE = {
   ogImage: '/opengraph-image',
 } as const
 
+/** Pre-filled mailto for "Solicitar one-pager" — alternative to direct PDF */
+export const PILOT_MAILTO_ONEPAGER =
+  'mailto:rfuentes@noa-core.com,lpualuan@noa-core.com' +
+  '?subject=' + encodeURIComponent('Solicitud one-pager NOA — [Compañía]') +
+  '&body=' + encodeURIComponent(
+    'Hola Rebeca y Lara,\n\n' +
+    'Soy [Nombre] de [Compañía], área [HSE · Personas · Operaciones · ESG]. ' +
+    'Me interesa recibir el one-pager ejecutivo de NOA para circular internamente con mi equipo.\n\n' +
+    'Confirmo que mantendré la información bajo confidencialidad.\n\n' +
+    'Saludos,\n[Nombre + cargo]'
+  )
+
 /** Pre-filled mailto for "Solicitar piloto" — opens user's mail client */
 export const PILOT_MAILTO =
   'mailto:rfuentes@noa-core.com,lpualuan@noa-core.com' +
@@ -52,7 +64,7 @@ export const HERO = {
   subline:
     'NOA convierte la pausa de turno en recuperación neuro-sensorial medible — micro-pausas operadas dentro del flujo del turno, sin pérdida de horas-hombre.',
   primaryCta:    { label: 'Solicitar piloto por correo', href: PILOT_MAILTO },
-  secondaryCta:  { label: 'Descargar one-pager',         href: '/media/noa-one-pager.pdf', meta: 'PDF · 2pp · sin formulario' },
+  secondaryCta:  { label: 'Solicitar one-pager',         href: PILOT_MAILTO_ONEPAGER, meta: 'PDF ejecutivo · Bajo NDA' },
   videoCta:      { label: 'Ver el módulo (24s)',         glyph: '▷' },
   microLine: 'Respuesta directa de las fundadoras < 10 días hábiles · NDA disponible · Video ilustrativo (renders + escenas conceptuales)',
   badge: 'TRL 5 · Disponible para piloto 2026',

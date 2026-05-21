@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Play, X, FileText } from 'lucide-react'
+import { ArrowRight, Play, X, FileText, Volume2 } from 'lucide-react'
 import { HERO } from '@/lib/copy'
 
 // Render headline with optional italic emphasis on specific tokens
@@ -21,6 +21,8 @@ function renderHeadline(text: string) {
 export function Hero() {
   const [visible, setVisible] = useState(false)
   const [videoOpen, setVideoOpen] = useState(false)
+  const [muted, setMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
@@ -28,7 +30,11 @@ export function Hero() {
   }, [])
 
   useEffect(() => {
-    if (!videoOpen) return
+    if (!videoOpen) {
+      // Reset mute state when modal closes
+      setMuted(true)
+      return
+    }
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setVideoOpen(false)
     }
@@ -39,6 +45,13 @@ export function Hero() {
       window.removeEventListener('keydown', onKey)
     }
   }, [videoOpen])
+
+  // When user clicks unmute, ensure video keeps playing with audio
+  useEffect(() => {
+    if (!muted && videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+  }, [muted])
 
   return (
     <>
@@ -261,8 +274,8 @@ export function Hero() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Video — el módulo NOA en 60 segundos"
-          className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+          aria-label="Render conceptual del módulo NOA · Producto en TRL 5"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
           style={{
             background: 'rgba(18, 24, 27, 0.85)',
             backdropFilter: 'blur(8px)',
@@ -274,7 +287,7 @@ export function Hero() {
             type="button"
             onClick={() => setVideoOpen(false)}
             aria-label="Cerrar video"
-            className="absolute top-6 right-6 size-10 rounded-full flex items-center justify-center transition-colors"
+            className="absolute top-6 right-6 size-10 rounded-full flex items-center justify-center transition-colors z-20"
             style={{
               background: 'rgba(255,255,255,0.1)',
               color: 'var(--color-on-primary)',
@@ -283,20 +296,106 @@ export function Hero() {
           >
             <X strokeWidth={1.5} />
           </button>
+
           <div
-            className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden"
-            style={{ background: 'var(--color-primary)' }}
+            className="relative w-full max-w-5xl flex flex-col gap-3"
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              src={HERO.video.modalSrc}
-              poster={HERO.video.poster}
-              controls
-              autoPlay
-              className="w-full h-full object-cover"
+            {/* Modal title bar — addresses "video ilustrativo" prominently */}
+            <div className="flex items-center justify-between gap-4 px-1">
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <p
+                  className="text-base sm:text-lg"
+                  style={{
+                    color: 'var(--color-on-primary)',
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 400,
+                  }}
+                >
+                  Render conceptual del módulo NOA
+                </p>
+                <p
+                  className="text-[10px] uppercase"
+                  style={{
+                    color: 'var(--color-tertiary-light)',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 500,
+                    letterSpacing: '0.15em',
+                  }}
+                >
+                  Producto en TRL 5 · 22s · audio
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="relative w-full aspect-video rounded-2xl overflow-hidden"
+              style={{ background: 'var(--color-primary)' }}
             >
-              Tu navegador no soporta video HTML5.
-            </video>
+              <video
+                ref={videoRef}
+                src={HERO.video.modalSrc}
+                poster={HERO.video.poster}
+                controls
+                autoPlay
+                muted={muted}
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                Tu navegador no soporta video HTML5.
+              </video>
+
+              {/* Unmute overlay — first 3 seconds */}
+              {muted && (
+                <button
+                  type="button"
+                  onClick={() => setMuted(false)}
+                  className="absolute top-4 left-4 flex items-center gap-2 px-3 py-2 rounded-full transition-all hover:scale-105"
+                  style={{
+                    background: 'rgba(181,108,54,0.95)',
+                    color: 'var(--color-on-primary)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  <Volume2 className="size-3.5" strokeWidth={2} />
+                  <span>Activar sonido</span>
+                </button>
+              )}
+
+              {/* Watermark — discrete, blinds against "engaño" claims */}
+              <div
+                aria-hidden
+                className="absolute bottom-4 right-4 px-2.5 py-1 rounded text-[10px] uppercase pointer-events-none"
+                style={{
+                  background: 'rgba(18,24,27,0.55)',
+                  color: 'rgba(255,255,255,0.78)',
+                  fontFamily: 'var(--font-mono)',
+                  letterSpacing: '0.1em',
+                  backdropFilter: 'blur(4px)',
+                }}
+              >
+                Render ilustrativo · NOA-CORE v1.0
+              </div>
+            </div>
+
+            {/* Disclosure note below video */}
+            <p
+              className="text-[11px] px-1"
+              style={{
+                color: 'rgba(255,255,255,0.65)',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 300,
+                lineHeight: 1.5,
+              }}
+            >
+              Las escenas combinan renders 3D y composición conceptual. El producto físico está en
+              fase de validación industrial (TRL 5) — solicitá visita técnica al taller para verlo
+              en persona.
+            </p>
           </div>
         </div>
       )}
