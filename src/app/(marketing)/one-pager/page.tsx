@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { SITE, NUMBERS, COMPLIANCE, COMMERCIAL_MODELS, FINAL_CTA, MANIFESTO } from '@/lib/copy'
 import { PrintButton } from './PrintButton'
 
@@ -60,7 +61,7 @@ export default function OnePagerPage() {
           gap: 8,
         }}
       >
-        <a
+        <Link
           href="/"
           style={{
             background: 'var(--color-surface-container-low)',
@@ -75,7 +76,7 @@ export default function OnePagerPage() {
           }}
         >
           ← Volver
-        </a>
+        </Link>
         <PrintButton />
       </div>
 

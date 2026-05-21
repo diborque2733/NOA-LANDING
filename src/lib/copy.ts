@@ -509,10 +509,10 @@ export const FOOTER = {
   },
   /** Documentos descargables */
   docs: [
-    { label: 'One-pager ejecutivo',  href: '/media/noa-one-pager.pdf', meta: 'PDF · 2pp · abierto' },
-    { label: 'Safety Dossier',       href: '#contacto',                meta: 'Bajo NDA' },
-    { label: 'Política de privacidad', href: '/privacidad',            meta: 'Ley 19.628' },
-    { label: 'Términos de servicio', href: '/terminos',                meta: '' },
+    { label: 'One-pager ejecutivo',  href: '/one-pager',     meta: '2pp · abierto' },
+    { label: 'Safety Dossier',       href: '/safety-dossier', meta: 'Resumen · full bajo NDA' },
+    { label: 'Política de privacidad', href: '/privacidad',  meta: 'Ley 19.628' },
+    { label: 'Términos de servicio', href: '/terminos',      meta: '' },
   ],
   /** Compliance summary */
   compliance: [
