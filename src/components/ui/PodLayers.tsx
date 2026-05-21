@@ -80,6 +80,132 @@ export function PodLayers({ className }: PodLayersProps) {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
         />
+
+        {/* SENSORIAL OVERLAYS — visualizan las 4 capas radiando desde la silla */}
+
+        {/* LUZ — rayos de luz cálidos desde arriba */}
+        <motion.g
+          opacity={active === 'luz' ? 1 : 0.45}
+          style={{ transition: 'opacity 0.4s' }}
+        >
+          <defs>
+            <radialGradient id="lightGlow" cx="50%" cy="0%" r="60%">
+              <stop offset="0%" stopColor="rgba(255,210,140,0.55)" />
+              <stop offset="40%" stopColor="rgba(255,210,140,0.18)" />
+              <stop offset="100%" stopColor="rgba(255,210,140,0)" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="200" cy="80" rx="55" ry="80" fill="url(#lightGlow)" />
+          {[-18, -9, 0, 9, 18].map((dx, i) => (
+            <motion.line
+              key={i}
+              x1={200 + dx}
+              y1={70}
+              x2={200 + dx * 1.6}
+              y2={140}
+              stroke="rgba(255,200,120,0.45)"
+              strokeWidth="0.5"
+              strokeDasharray="2 3"
+              initial={{ opacity: 0, pathLength: 0 }}
+              whileInView={{ opacity: 1, pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.6 + i * 0.05 }}
+            />
+          ))}
+        </motion.g>
+
+        {/* ACÚSTICA — ondas concéntricas desde el lado derecho del headrest */}
+        <motion.g
+          opacity={active === 'acustica' ? 1 : 0.45}
+          style={{ transition: 'opacity 0.4s' }}
+        >
+          {[15, 25, 35].map((r, i) => (
+            <motion.path
+              key={i}
+              d={`M ${280 + r/2} 200 A ${r} ${r} 0 0 1 ${280 + r/2} ${200 + 0.01}`}
+              fill="none"
+              stroke="rgba(91,156,153,0.55)"
+              strokeWidth="0.8"
+              strokeDasharray="3 3"
+              initial={{ opacity: 0, scale: 0.6 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.7 + i * 0.1 }}
+              style={{ transformOrigin: '280px 200px' }}
+            />
+          ))}
+          {/* Sound wave arcs */}
+          {[20, 32, 44].map((r, i) => (
+            <motion.path
+              key={`arc-${i}`}
+              d={`M ${275 + r * 0.6} ${200 - r * 0.5} A ${r} ${r} 0 0 1 ${275 + r * 0.6} ${200 + r * 0.5}`}
+              fill="none"
+              stroke="rgba(181,108,54,0.55)"
+              strokeWidth="0.6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 + i * 0.08 }}
+            />
+          ))}
+        </motion.g>
+
+        {/* AROMA — curls/wisps que suben del lado izquierdo bajo */}
+        <motion.g
+          opacity={active === 'aroma' ? 1 : 0.45}
+          style={{ transition: 'opacity 0.4s' }}
+        >
+          {[0, 1, 2].map((i) => (
+            <motion.path
+              key={i}
+              d={`M ${175 + i * 12} 290 C ${170 + i * 12} 280, ${182 + i * 12} 268, ${175 + i * 12} 256 C ${168 + i * 12} 245, ${180 + i * 12} 232, ${175 + i * 12} 222`}
+              fill="none"
+              stroke="rgba(181,108,54,0.5)"
+              strokeWidth="0.7"
+              strokeLinecap="round"
+              initial={{ opacity: 0, pathLength: 0 }}
+              whileInView={{ opacity: 1, pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.8 + i * 0.15 }}
+            />
+          ))}
+        </motion.g>
+
+        {/* ERGONOMÍA — líneas de descarga corporal / ángulos del recline */}
+        <motion.g
+          opacity={active === 'ergonomia' ? 1 : 0.45}
+          style={{ transition: 'opacity 0.4s' }}
+        >
+          {/* Recline angle arc */}
+          <motion.path
+            d="M 100 200 A 50 50 0 0 1 130 165"
+            fill="none"
+            stroke="rgba(13,78,74,0.45)"
+            strokeWidth="0.7"
+            strokeDasharray="3 4"
+            initial={{ opacity: 0, pathLength: 0 }}
+            whileInView={{ opacity: 1, pathLength: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.7 }}
+          />
+          {/* Spine/posture indicators */}
+          {[0, 1, 2].map((i) => (
+            <motion.line
+              key={i}
+              x1={115 - i * 4}
+              y1={185 + i * 8}
+              x2={125 - i * 4}
+              y2={175 + i * 8}
+              stroke="rgba(13,78,74,0.55)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.9 + i * 0.1 }}
+            />
+          ))}
+        </motion.g>
       </svg>
 
       {/* Pod chair in center — official NOA chair refined */}

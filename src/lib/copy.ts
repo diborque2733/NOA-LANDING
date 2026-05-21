@@ -64,7 +64,7 @@ export const HERO = {
   subline:
     'NOA convierte la pausa de turno en recuperación neuro-sensorial medible — micro-pausas operadas dentro del flujo del turno, sin pérdida de horas-hombre.',
   primaryCta:    { label: 'Solicitar piloto por correo', href: PILOT_MAILTO },
-  secondaryCta:  { label: 'Solicitar one-pager',         href: PILOT_MAILTO_ONEPAGER, meta: 'PDF ejecutivo · Bajo NDA' },
+  secondaryCta:  { label: 'Ver ficha técnica',           href: '/one-pager', meta: '2 páginas · imprimible' },
   videoCta:      { label: 'Ver el módulo (24s)',         glyph: '▷' },
   microLine: 'Respuesta directa de las fundadoras < 10 días hábiles · NDA disponible · Video ilustrativo (renders + escenas conceptuales)',
   badge: 'TRL 5 · Disponible para piloto 2026',
