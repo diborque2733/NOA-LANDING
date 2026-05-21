@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  /* ────── Surfaces (Industrial Atelier) ────── */
+  --color-surface:                    #FBF9F3;
+  --color-surface-container-low:      #F6F3ED;
+  --color-surface-container:          #F0EEE8;
+  --color-surface-container-lowest:   #FFFFFF;
+  --color-surface-container-highest:  #E4E2DC;
+
+  /* ────── Brand ────── */
+  --color-primary:           #003633;
+  --color-primary-container: #0D4E4A;
+  --color-secondary:         #8F4D1A;
+  --color-surface-tint:      #2E6763;
+
+  /* ────── Text ────── */
+  --color-on-surface:         #1B1C18;
+  --color-on-surface-variant: #44483F;
+  --color-on-surface-muted:   #6E6F66;
+  --color-on-primary:         #FFFFFF;
+  --color-outline-variant:    #BFC8C6;
+
+  /* ────── Typography ────── */
+  --font-display: var(--font-cormorant), 'Georgia', serif;
+  --font-body:    var(--font-dm-sans), 'Inter', system-ui, sans-serif;
+  --font-mono:    var(--font-dm-mono), 'IBM Plex Mono', monospace;
+
+  /* ────── Type scale ────── */
+  --text-eyebrow:   0.75rem;
+  --text-body:      1rem;
+  --text-lead:      1.125rem;
+  --text-h4:        1.5rem;
+  --text-h3:        2rem;
+  --text-h2:        3rem;
+  --text-h1:        4.5rem;
+  --text-display:   6rem;
+
+  /* ────── Spacing extensions ────── */
+  --spacing-section: 8rem;
+
+  /* ────── Radii ────── */
+  --radius-pill:    9999px;
+  --radius-tray:    3rem;
+
+  /* ────── Ambient shadow (only one allowed) ────── */
+  --shadow-ambient: 0 20px 60px -5px rgba(27, 28, 24, 0.06);
+}
+
+/* ────── Base ────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ────── Utility classes for the design system ────── */
+@layer utilities {
+  /* Eyebrow: UPPERCASE DM Mono con tracking */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-on-surface-variant);
+    font-weight: 400;
+  }
+
+  /* Display headline: Cormorant Light con italic emphasis */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .display em,
+  .display i {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Atelier Tray: signature asymmetric card (top-left + bottom-right rounded) */
+  .atelier-tray {
+    background-color: var(--color-surface-container-highest);
+    border-radius: var(--radius-tray) 0.5rem var(--radius-tray) 0.5rem;
+  }
+
+  .atelier-tray-alt {
+    background-color: var(--color-surface-container-highest);
+    border-radius: 0.5rem var(--radius-tray) 0.5rem var(--radius-tray);
+  }
+
+  /* Copper bullet — 4px circular dot in lists */
+  .copper-bullet > li {
+    position: relative;
+    padding-left: 1.25rem;
+    list-style: none;
+  }
+  .copper-bullet > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+  }
+
+  /* Glass surface for navbar / floating overlays */
+  .glass {
+    background-color: rgba(251, 249, 243, 0.7);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  }
+
+  /* Ghost border (only when accessibility requires a boundary) */
+  .ghost-border {
+    border: 1px solid rgba(191, 200, 198, 0.4);
+  }
+
+  /* Machined gradient on primary surfaces */
+  .machined-primary {
+    background: radial-gradient(
+      ellipse at center,
+      var(--color-primary-container) 0%,
+      var(--color-primary) 80%
+    );
+  }
+}
