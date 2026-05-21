@@ -26,11 +26,13 @@ Tareas pendientes ordenadas por prioridad. Mover a `CHANGELOG.md` cuando se comp
 
 ## P1 — Necesario antes de salir a producción
 
-- [ ] Descargar renders 3D del Drive (4 jpgs, MCP session se cortó — reintentar)
+- [ ] **🔒 CRÍTICO: Cambiar repo a privado** — https://github.com/diborque2733/NOA-LANDING/settings → Danger Zone → "Change visibility" → Make private. *MCP no tiene `update_repository`, requiere acción manual.*
+- [ ] Descargar renders 3D del Drive (4 jpgs en folder `1yXaUO5rVY9Un4ocuX5wp430CtcgsH1lE`)
 - [ ] Optimizar renders a webp (1600px max, quality 80) → `public/images/`
 - [ ] Descargar marks alternativos `7.png`, `8.png` para favicon + OG
 - [ ] Generar OG image (1200×630) con logo + tagline
-- [ ] Configurar `RESEND_API_KEY` en Vercel
+- [ ] Configurar `RESEND_API_KEY` en Vercel (env var)
+- [ ] Crear cuenta Resend + verificar dominio `noa-core.com`
 - [ ] Configurar dominio `noa-core.com` apuntando a Vercel
 - [ ] Test del form de contacto end-to-end
 - [ ] Lighthouse audit (target Performance ≥ 90, SEO 100, A11y ≥ 90)
