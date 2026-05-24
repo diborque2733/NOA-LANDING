@@ -2,13 +2,35 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FOOTER, SITE } from '@/lib/copy'
 
-export function Footer() {
+/**
+ * FooterV2 · footer slim de /v2 con solo los enlaces que apuntan
+ * a secciones realmente presentes en la página.
+ *
+ * Diferencias contra Footer:
+ * - Producto: solo "El sistema · Casos de uso · Piloto · Equipo"
+ * - Sin grupo "Compañía" (Manifiesto, Cumplimiento, FAQ removidos en /v2)
+ * - Contacto directo mantenido
+ * - Documentación y Cumplimiento normativo intactos (son docs/normativa, no nav)
+ */
+const PRODUCT_LINKS = [
+  { label: 'El sistema',    href: '#system' },
+  { label: 'Casos de uso',  href: '#use-cases' },
+  { label: 'Piloto',        href: '#pilot-data' },
+  { label: 'Equipo',        href: '#team' },
+] as const
+
+const CONTACT_LINKS = [
+  { label: 'rfuentes@noa-core.com', href: 'mailto:rfuentes@noa-core.com' },
+  { label: 'lpualuan@noa-core.com', href: 'mailto:lpualuan@noa-core.com' },
+  { label: 'LinkedIn',              href: 'https://www.linkedin.com/in/rebeca-fuentes-gonzalez-07a8935a/' },
+] as const
+
+export function FooterV2() {
   return (
     <footer
       className="relative px-6 md:px-10 pt-20 pb-10 overflow-hidden"
       style={{ background: 'var(--color-primary)', color: 'var(--color-on-primary)' }}
     >
-      {/* Decorative blob */}
       <div
         aria-hidden
         className="absolute pointer-events-none"
@@ -23,16 +45,15 @@ export function Footer() {
       />
 
       <div className="relative mx-auto w-full max-w-[1280px]">
-        {/* Top row — Logo + tagline at left, primary nav at right */}
+        {/* Top row */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 mb-14">
           <div>
             <Image
-              src="/brand/logo.png"
+              src="/brand/logo-wordmark-3d.png"
               alt="NOA"
-              width={140}
-              height={48}
-              className="h-12 w-auto brightness-0 invert mb-7"
-              style={{ opacity: 0.92 }}
+              width={512}
+              height={705}
+              className="h-12 w-auto mb-7"
             />
             <p
               className="display max-w-md mb-6"
@@ -57,39 +78,68 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {FOOTER.groups.map((group) => (
-              <div key={group.title}>
-                <p
-                  className="text-[10px] uppercase mb-4"
-                  style={{
-                    color: 'var(--color-tertiary-light)',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 500,
-                    letterSpacing: '0.15em',
-                  }}
-                >
-                  {group.title}
-                </p>
-                <ul className="space-y-2.5">
-                  {group.links.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-sm transition-colors hover:text-[var(--color-tertiary-light)]"
-                        style={{
-                          color: 'rgba(255,255,255,0.85)',
-                          fontFamily: 'var(--font-body)',
-                          fontWeight: 400,
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <p
+                className="text-[10px] uppercase mb-4"
+                style={{
+                  color: 'var(--color-tertiary-light)',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                }}
+              >
+                Producto
+              </p>
+              <ul className="space-y-2.5">
+                {PRODUCT_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm transition-colors hover:text-[var(--color-tertiary-light)]"
+                      style={{
+                        color: 'rgba(255,255,255,0.85)',
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 400,
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p
+                className="text-[10px] uppercase mb-4"
+                style={{
+                  color: 'var(--color-tertiary-light)',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                }}
+              >
+                Contacto directo
+              </p>
+              <ul className="space-y-2.5">
+                {CONTACT_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm transition-colors hover:text-[var(--color-tertiary-light)]"
+                      style={{
+                        color: 'rgba(255,255,255,0.85)',
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 400,
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
