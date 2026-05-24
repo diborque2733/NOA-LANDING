@@ -1,60 +1,44 @@
-import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
-import { Hero } from '@/components/sections/Hero'
-import { CredibilityStrip } from '@/components/ui/CredibilityStrip'
-import { Manifesto } from '@/components/sections/Manifesto'
-import { Numbers } from '@/components/sections/Numbers'
-import { System } from '@/components/sections/System'
-import { NotIt } from '@/components/sections/NotIt'
+import type { Metadata } from 'next'
 import { Attributes } from '@/components/sections/Attributes'
-import { ForWhom } from '@/components/sections/ForWhom'
-import { HowItWorks } from '@/components/sections/HowItWorks'
-import { UseCases } from '@/components/sections/UseCases'
-import { CommercialModels } from '@/components/sections/CommercialModels'
-import { Team } from '@/components/sections/Team'
-import { Compliance } from '@/components/sections/Compliance'
-import { Faq } from '@/components/sections/Faq'
 import { FinalCTA } from '@/components/sections/FinalCTA'
-import { VersionPicker } from '@/components/v2/VersionPicker'
+// v2 components — versión final promovida a home
+import { NavbarV2 } from '@/components/v2/NavbarV2'
+import { FooterV2 } from '@/components/v2/FooterV2'
+import { HeroV2 } from '@/components/v2/HeroV2'
+import { NumbersV2 } from '@/components/v2/NumbersV2'
+import { SystemV2 } from '@/components/v2/SystemV2'
+import { UseCasesV2 } from '@/components/v2/UseCasesV2'
+import { TeamV2 } from '@/components/v2/TeamV2'
+import { PilotDataV2 } from '@/components/v2/PilotDataV2'
 
+export const metadata: Metadata = {
+  title: 'NOA — Industrial Recovery Tech para minería',
+  description:
+    'Estación autónoma de recuperación neurosensorial para faenas mineras. 15 minutos de recuperación medible, trazable y gestionable dentro del flujo del turno.',
+  robots: { index: true, follow: true },
+}
+
+/**
+ * Home final · /v2 promovida a / (decisión Diego · 24·MAY·2026)
+ *
+ * Las rutas /v1b y /v2 siguen accesibles para comparación histórica.
+ * El sitio público noa-core.com sirve este componente.
+ */
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <NavbarV2 />
       <main>
-        {/* A — Hero / Statement */}
-        <Hero />
-        {/* Credibility strip */}
-        <CredibilityStrip />
-        {/* B — Manifesto (quote serif) */}
-        <Manifesto />
-        {/* B — Numbers (stats grid) */}
-        <Numbers />
-        {/* C — System (cabin reveal) */}
-        <System />
-        {/* NOA NO ES band (teal accent break) */}
-        <NotIt />
-        {/* D — Attributes (3 feature cards) */}
+        <HeroV2 />
+        <NumbersV2 />
+        <SystemV2 />
         <Attributes />
-        {/* D — ForWhom (4 buyer personas) */}
-        <ForWhom />
-        {/* C — HowItWorks (timeline + pilot card) */}
-        <HowItWorks />
-        {/* C — UseCases (asymmetric image+cards) */}
-        <UseCases />
-        {/* D — CommercialModels (pricing + procurement) */}
-        <CommercialModels />
-        {/* C — Team (founders + ecosystem) */}
-        <Team />
-        {/* B — Compliance (6 trust badges) */}
-        <Compliance />
-        {/* FAQ — accordion */}
-        <Faq />
-        {/* E — FinalCTA (teal gradient + form) */}
+        <UseCasesV2 />
+        <PilotDataV2 />
+        <TeamV2 />
         <FinalCTA />
       </main>
-      <Footer />
-      <VersionPicker current="v1" />
+      <FooterV2 />
     </>
   )
 }

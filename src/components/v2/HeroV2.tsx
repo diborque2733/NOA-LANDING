@@ -61,7 +61,7 @@ export function HeroV2() {
           playsInline
           poster={HERO_V2.video.poster}
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          style={{ opacity: 0.38 }}
+          style={{ opacity: 0.22 }}
         >
           <source src={HERO_V2.video.loopSrc} type="video/mp4" />
         </video>

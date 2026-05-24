@@ -45,13 +45,13 @@ export function Attributes() {
                     0{i + 1}
                   </div>
                   <div
-                    className="size-14 rounded-2xl flex items-center justify-center mb-7"
+                    className="size-16 rounded-2xl flex items-center justify-center mb-7"
                     style={{
-                      background: 'rgba(13,78,74,0.08)',
+                      background: 'rgba(13,78,74,0.10)',
                       color: 'var(--color-primary)',
                     }}
                   >
-                    <Icon className="size-6" strokeWidth={1.2} aria-hidden />
+                    <Icon className="size-7" strokeWidth={1.4} aria-hidden />
                   </div>
                   <h3
                     className="display mb-4"

@@ -17,7 +17,7 @@ export const HERO_V2 = {
   primaryCta:   { label: 'Solicitar piloto por correo', href: PILOT_MAILTO },
   secondaryCta: { label: 'Ver ficha técnica',           href: '/one-pager', meta: '2 páginas · imprimible' },
   videoCta:     { label: 'Ver el módulo (24s)',         glyph: '▷' },
-  microLine: 'Respuesta directa de las fundadoras en menos de 10 días hábiles. NDA disponible. Video ilustrativo (renders + escenas conceptuales).',
+  microLine: 'RESPUESTA DIRECTA FUNDADORAS · NDA DISPONIBLE · VIDEO ILUSTRATIVO',
   kpis: [
     { value: '24%',   label: 'Participación femenina en la gran minería chilena',   source: 'Consejo Minero · récord mundial 2do sem 2025' },
     { value: '44K+',  label: 'Mujeres trabajando en minería en Chile',              source: 'Consejo Minero · Cochilco' },
